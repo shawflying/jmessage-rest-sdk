@@ -1,2 +1,2 @@
-# imessage-rest-sdk
+# jmessage-rest-sdk
 极光IM rest sdk

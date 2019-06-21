@@ -3,9 +3,10 @@ import Chatroom from "./chatroom";
 import { IChatroom } from "./interfaces";
 
 let chatroomParams: IChatroom = {
-  "owner_username": "yanxxit",
-  "name": "临时聊天室",
-  "description": "聊天室测试",
+  "chatroom_id:": "5620ae44663ff29d64d50969",
+  "owner_username": "tingo",
+  "name": "5620ae44663ff29d64d50969_20190621",
+  "description": "互动聊天室",
   "members_username": []
 };
 

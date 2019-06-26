@@ -1,13 +1,13 @@
 /** 聊天室 */
 export interface IChatroom {
-  name: string;// 聊天室名字（必填) Byte(0~64)
-  owner_username: string;//聊天室创建者（必填）	Byte (4~128)
-  description?: string;//聊天室描述（选填）	Byte(250)
-  members_username?: string[];//聊天室成员列表（选填）
-  ctime?: string;//创建时间	 2017-11-27 18:38:25
-  max_member_count?: number;//最大成员数	
-  total_member_count?: number;//当前总人数
-  flag?: number;//禁言标志	0表示不禁言 1表示开启禁言
+  name: string; // 聊天室名字（必填) Byte(0~64)
+  owner_username: string; // 聊天室创建者（必填）	Byte (4~128)
+  description?: string; // 聊天室描述（选填）	Byte(250)
+  members_username?: string[]; // 聊天室成员列表（选填）
+  ctime?: string; // 创建时间	 2017-11-27 18:38:25
+  max_member_count?: number; // 最大成员数
+  total_member_count?: number; // 当前总人数
+  flag?: number; // 禁言标志	0表示不禁言 1表示开启禁言
   [propName: string]: any;
 }
 
@@ -48,10 +48,10 @@ export interface IMessage {
   /** 发送消息者的身份，可为“admin”，“user” （必填） */
   from_type: string;
 
-  /** 目标id 
-   * single填username 
-   * group 填Group 
-   * id chatroom 填chatroomid（必填） 
+  /** 目标id
+   * single填username
+   * group 填Group
+   * id chatroom 填chatroomid（必填）
    * */
   target_id: string;
   /** 跨应用目标appkey（选填） */
@@ -71,11 +71,11 @@ export interface IMessage {
     title?: string;
     alert?: string
   };
-  /** 发消息类型 
+  /** 发消息类型
      * text - 文本，
-     * image - 图片, 
+     * image - 图片,
      * custom - 自定义消息（msg_body为json对象即可，服务端不做校验）
-     * voice - 语音 （必填） 
+     * voice - 语音 （必填）
      * */
   msg_type: string;
   /** Json对象的消息体 限制为4096byte */

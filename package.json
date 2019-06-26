@@ -17,6 +17,8 @@
   },
   "devDependencies": {
     "@types/node": "^10.12.14",
+    "@types/request-promise": "^4.1.44",
+    "tslint": "^5.18.0",
     "typescript": "^3.2.2"
   }
 }

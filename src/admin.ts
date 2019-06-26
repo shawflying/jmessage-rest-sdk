@@ -1,22 +1,22 @@
-import * as httplib from "./httplib"
-import * as conf from "./config"
-import { IChatroom } from "./interfaces"
+import * as httplib from './httplib';
+import * as conf from './config';
+import { IChatroom } from './interfaces';
 /** 管理员类 */
 export default class Admin {
 
   /** user接口api */
-  static api = conf.admins
+  static api = conf.admins;
 
   /** 注册管理员 */
   static async create(body: any) {
-    return await httplib.post(this.api, body)
+    return await httplib.post(this.api, body);
   }
   static async update(username: string, body: any) {
-    return await httplib.put(this.api + username, body)
+    return await httplib.put(this.api + username, body);
   }
   static async delete(username: string) { }
   static async query(username: string) {
-    return await httplib.get(this.api + username)
+    return await httplib.get(this.api + username);
   }
   /**
    * @description 获取应用管理员列表
@@ -52,6 +52,6 @@ export default class Admin {
    * @memberof Admin
    */
   static async getAdminsListByAppkey(start: number = 0, count: number = 10) {
-    return await httplib.get(this.api + `?start=${start}&count=${count}`)
+    return await httplib.get(this.api + `?start=${start}&count=${count}`);
   }
 }

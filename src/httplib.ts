@@ -3,10 +3,10 @@
  * @author yanxxit
  * @description 将request-promise进行简单封装，使得使用时更加方便
  */
-const rp = require('request-promise');
-const moment = require('moment');
-const querystring = require('querystring');
-const conf = require('./config');
+import rp = require('request-promise');
+import moment = require('moment');
+import querystring = require('querystring');
+import conf = require('./config');
 
 /** 获取 headers.Authorization */
 const getAuthorization = () => {

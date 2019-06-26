@@ -1,12 +1,12 @@
-import * as httplib from "./httplib"
-import * as conf from "./config"
-import { IUser } from "./interfaces"
+import * as httplib from './httplib';
+import * as conf from './config';
+import { IUser } from './interfaces';
 /** 用户类 */
 export default class User {
 
   /** api */
-  static api = conf.users
-  static apiv2 = conf.users_v2
+  static api: string = conf.users;
+  static apiv2: string = conf.users_v2;
 
   /**
    * @description 创建用户,支持多用户同时创建
@@ -18,7 +18,7 @@ export default class User {
    * @memberof User
    */
   static async create(body: string[]) {
-    return await httplib.post(this.api, body)
+    return await httplib.post(this.api, body);
   }
   /**
    * @description更新用户信息
@@ -31,7 +31,7 @@ export default class User {
    * @memberof User
    */
   static async update(username: string, body: IUser) {
-    return await httplib.put(this.api + username, body)
+    return await httplib.put(this.api + username, body);
   }
   /**
    * @description修改密码
@@ -44,7 +44,7 @@ export default class User {
    * @memberof User
    */
   static async updatePassword(username: string, body: IUser) {
-    return await httplib.put(this.api + `${username}/password`, body)
+    return await httplib.put(this.api + `${username}/password`, body);
   }
   /**
    * @description删除用户
@@ -56,7 +56,7 @@ export default class User {
    * @memberof User
    */
   static async delete(username: string) {
-    return await httplib.del(this.api + username)
+    return await httplib.del(this.api + username);
   }
   /**
    * @description批量删除用户
@@ -68,7 +68,7 @@ export default class User {
    * @memberof User
    */
   static async deleteMore(usernames: string[]) {
-    return await httplib.del(this.api, usernames)
+    return await httplib.del(this.api, usernames);
   }
 
   /**
@@ -81,14 +81,14 @@ export default class User {
    * @memberof User
    */
   static async blacklistAdd(username: string) {
-    return await httplib.put(this.api + `${username}/blacklist`)
+    return await httplib.put(this.api + `${username}/blacklist`);
   }
   /** 移除黑名单 */
   static async blacklistDel(username: string) {
-    return await httplib.del(this.api + `${username}/blacklist`)
+    return await httplib.del(this.api + `${username}/blacklist`);
   }
   static async blacklist(username: string) {
-    return await httplib.get(this.api + `${username}/blacklist`)
+    return await httplib.get(this.api + `${username}/blacklist`);
   }
 
 
@@ -102,21 +102,21 @@ export default class User {
    * @memberof User
    */
   static async query(username: string) {
-    return await httplib.get(this.api + username)
+    return await httplib.get(this.api + username);
   }
 
   /** 获取用户列表 */
   static async list(start: number = 0, count: number = 10) {
-    return await httplib.get(this.api + `?start=${start}&count=${count}`)
+    return await httplib.get(this.api + `?start=${start}&count=${count}`);
   }
 
   /** 免打扰设置 */
   static async nodisturb(username: string, body: IUser) {
-    return await httplib.post(this.api + `${username}/nodisturb`, body)
+    return await httplib.post(this.api + `${username}/nodisturb`, body);
   }
   /** 禁用用户 */
   static async forbidden(username: string, disable: number) {
-    return await httplib.put(this.api + `${username}/nodisturb?disable=${disable}`)
+    return await httplib.put(this.api + `${username}/nodisturb?disable=${disable}`);
   }
 
   /**
@@ -132,7 +132,7 @@ export default class User {
    * @memberof User
    */
   static async queryUserStat(username: string) {
-    return await httplib.get(this.api + `${username}/userstat`)
+    return await httplib.get(this.api + `${username}/userstat`);
   }
   /**
    * @description批量用户在线状态查询
@@ -144,10 +144,10 @@ export default class User {
    * @memberof User
    */
   static async queryMoreUserStatV1(usernames: string[]) {
-    return await httplib.post(this.api + `userstat`, usernames)
+    return await httplib.post(this.api + `userstat`, usernames);
   }
   static async queryMoreUserStatV2(usernames: string[]) {
-    return await httplib.post(this.apiv2 + `userstat`, usernames)
+    return await httplib.post(this.apiv2 + `userstat`, usernames);
   }
 
 }

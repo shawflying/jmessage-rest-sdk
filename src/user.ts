@@ -17,7 +17,7 @@ export default class User {
    * @returns
    * @memberof User
    */
-  static async create(body = []) {
+  static async create(body: string[]) {
     return await httplib.post(this.api, body)
   }
   /**
@@ -30,7 +30,7 @@ export default class User {
    * @returns
    * @memberof User
    */
-  static async update(username, body) {
+  static async update(username: string, body: IUser) {
     return await httplib.put(this.api + username, body)
   }
   /**
@@ -43,7 +43,7 @@ export default class User {
    * @returns
    * @memberof User
    */
-  static async updatePassword(username, body) {
+  static async updatePassword(username: string, body: IUser) {
     return await httplib.put(this.api + `${username}/password`, body)
   }
   /**
@@ -55,7 +55,7 @@ export default class User {
    * @returns
    * @memberof User
    */
-  static async delete(username) {
+  static async delete(username: string) {
     return await httplib.del(this.api + username)
   }
   /**
@@ -67,7 +67,7 @@ export default class User {
    * @returns
    * @memberof User
    */
-  static async deleteMore(usernames) {
+  static async deleteMore(usernames: string[]) {
     return await httplib.del(this.api, usernames)
   }
 
@@ -80,14 +80,14 @@ export default class User {
    * @returns
    * @memberof User
    */
-  static async blacklistAdd(username) {
+  static async blacklistAdd(username: string) {
     return await httplib.put(this.api + `${username}/blacklist`)
   }
   /** 移除黑名单 */
-  static async blacklistDel(username) {
+  static async blacklistDel(username: string) {
     return await httplib.del(this.api + `${username}/blacklist`)
   }
-  static async blacklist(username) {
+  static async blacklist(username: string) {
     return await httplib.get(this.api + `${username}/blacklist`)
   }
 
@@ -98,24 +98,24 @@ export default class User {
    * @date 2019-06-14
    * @static
    * @param {*} username 用户名（唯一id）
-   * @returns 
+   * @returns
    * @memberof User
    */
-  static async query(username) {
+  static async query(username: string) {
     return await httplib.get(this.api + username)
   }
 
   /** 获取用户列表 */
-  static async list(start = 0, count = 10) {
+  static async list(start: number = 0, count: number = 10) {
     return await httplib.get(this.api + `?start=${start}&count=${count}`)
   }
 
   /** 免打扰设置 */
-  static async nodisturb(username, body) {
+  static async nodisturb(username: string, body: IUser) {
     return await httplib.post(this.api + `${username}/nodisturb`, body)
   }
   /** 禁用用户 */
-  static async forbidden(username, disable) {
+  static async forbidden(username: string, disable: number) {
     return await httplib.put(this.api + `${username}/nodisturb?disable=${disable}`)
   }
 
@@ -131,7 +131,7 @@ export default class User {
 }
    * @memberof User
    */
-  static async queryUserStat(username) {
+  static async queryUserStat(username: string) {
     return await httplib.get(this.api + `${username}/userstat`)
   }
   /**
@@ -143,10 +143,10 @@ export default class User {
    * @returns
    * @memberof User
    */
-  static async queryMoreUserStatV1(usernames = []) {
+  static async queryMoreUserStatV1(usernames: string[]) {
     return await httplib.post(this.api + `userstat`, usernames)
   }
-  static async queryMoreUserStatV2(usernames = []) {
+  static async queryMoreUserStatV2(usernames: string[]) {
     return await httplib.post(this.apiv2 + `userstat`, usernames)
   }
 

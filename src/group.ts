@@ -7,14 +7,14 @@ export default class Group {
   static api = conf.groups
 
   /** 创建用户 */
-  static async create(body) {
+  static async create(body: IGroup) {
     return await httplib.post(this.api, body)
   }
-  static async update(username, body) {
+  static async update(username: string, body: IGroup) {
     return await httplib.put(this.api + username, body)
   }
-  static async delete(username) { }
-  static async query(username) {
+  static async delete(username: string) { }
+  static async query(username: string) {
     return await httplib.get(this.api + username)
   }
 }

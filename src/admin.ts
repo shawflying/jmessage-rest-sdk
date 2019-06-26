@@ -8,14 +8,14 @@ export default class Admin {
   static api = conf.admins
 
   /** 注册管理员 */
-  static async create(body) {
+  static async create(body: any) {
     return await httplib.post(this.api, body)
   }
-  static async update(username, body) {
+  static async update(username: string, body: any) {
     return await httplib.put(this.api + username, body)
   }
-  static async delete(username) { }
-  static async query(username) {
+  static async delete(username: string) { }
+  static async query(username: string) {
     return await httplib.get(this.api + username)
   }
   /**
@@ -51,7 +51,7 @@ export default class Admin {
 }
    * @memberof Admin
    */
-  static async getAdminsListByAppkey(start = 0, count = 10) {
+  static async getAdminsListByAppkey(start: number = 0, count: number = 10) {
     return await httplib.get(this.api + `?start=${start}&count=${count}`)
   }
 }

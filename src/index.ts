@@ -15,14 +15,11 @@ import Resource from './resource';
 import Sdkregister from './sdkregister';
 import Sensitiveword from './sensitiveword';
 import User from './user';
-// import * as httplib from './httplib';
-import * as config from './config';
+import * as httplib from './httplib';
 
 
 export default (AppKey: string, MasterSecret: string) => {
-  config.AppConf.AppKey = AppKey;
-  config.AppConf.MasterSecret = MasterSecret;
-  // httplib.setAuthorization(AppKey,MasterSecret)
+  httplib.setAuthorization(AppKey, MasterSecret)
   return {
     Admin, Chatroom, Message, Group, Resource, Sdkregister, Sensitiveword, User
   }

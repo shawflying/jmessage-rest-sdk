@@ -6,24 +6,16 @@
 import rp = require('request-promise');
 import moment = require('moment');
 import querystring = require('querystring');
-import conf = require('./config');
+var current_headers: any = { Authorization: "" }
 
-/** 获取 headers.Authorization */
-const getAuthorization = () => {
-  const v = conf.AppConf.AppKey + ':' + conf.AppConf.MasterSecret;
-  let bff = Buffer.from(v, 'utf8');
-  let Authorization: string = 'Basic ' + bff.toString('base64');
-  return Authorization;
-};
+/** 配置 headers.Authorization */
 export const setAuthorization = (AppKey: string, MasterSecret: string) => {
   const v = AppKey + ':' + MasterSecret;
   let bff = Buffer.from(v, 'utf8');
   let Authorization: string = 'Basic ' + bff.toString('base64');
-  return Authorization;
-};
-
-const current_headers: any = {
-  Authorization: getAuthorization()
+  current_headers = {
+    Authorization: Authorization
+  };
 };
 
 

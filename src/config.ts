@@ -1,9 +1,5 @@
 const baseUrl: string = 'https://api.im.jpush.cn';
 
-export var AppConf = {
-  AppKey: '',//Appkey
-  MasterSecret: '',//master secret
-}
 /** 用户 */
 export const users: string = baseUrl + '/v1/users/';
 export const users_v2: string = baseUrl + '/v2/users/';

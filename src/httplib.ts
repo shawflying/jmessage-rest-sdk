@@ -10,7 +10,7 @@ import conf = require('./config');
 
 /** 获取 headers.Authorization */
 const getAuthorization = () => {
-  const v = conf.AppKey + ':' + conf.MasterSecret;
+  const v = conf.AppConf.AppKey + ':' + conf.AppConf.MasterSecret;
   let bff = Buffer.from(v, 'utf8');
   let Authorization: string = 'Basic ' + bff.toString('base64');
   return Authorization;

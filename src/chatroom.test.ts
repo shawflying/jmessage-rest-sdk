@@ -12,11 +12,13 @@ let chatroomParams: IChatroom = {
 
 
 (async () => {
-  let res = await Chatroom.create(chatroomParams);
-  console.log(res);
+  // let res = await Chatroom.create(chatroomParams);
+  // console.log(res);
 
   // let list = await Chatroom.getBatchChatroom([20739012, 20739014, 18250551])
   // console.log("--->", list)
+  let list = await Chatroom.getChatroomMembers(18287165,0,100)
+  console.log("--->", list)
 
   // let res = await Chatroom.delete(18250551)
   // console.log(res)

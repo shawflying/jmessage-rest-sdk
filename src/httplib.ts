@@ -15,6 +15,12 @@ const getAuthorization = () => {
   let Authorization: string = 'Basic ' + bff.toString('base64');
   return Authorization;
 };
+export const setAuthorization = (AppKey: string, MasterSecret: string) => {
+  const v = AppKey + ':' + MasterSecret;
+  let bff = Buffer.from(v, 'utf8');
+  let Authorization: string = 'Basic ' + bff.toString('base64');
+  return Authorization;
+};
 
 const current_headers: any = {
   Authorization: getAuthorization()

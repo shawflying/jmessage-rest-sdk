@@ -6,7 +6,8 @@
 import rp = require('request-promise');
 import moment = require('moment');
 import querystring = require('querystring');
-var current_headers: any = { Authorization: "" }
+var current_headers: any = { Authorization: "" };
+var timeout: number = 60000;//超时时间设置为60秒
 
 /** 配置 headers.Authorization */
 export const setAuthorization = (AppKey: string, MasterSecret: string) => {
@@ -60,7 +61,7 @@ const ErrorResponse = (type: string, uri: string, body: any, headers: any, err: 
 export let post = async (uri: string, body: any = {}, headers: any = {}) => {
   try {
     setHeaders(headers);
-    let data = await rp.post(uri, { body, json: true, headers });
+    let data = await rp.post(uri, { body, json: true, headers, timeout });
     return SuccessRequest('POST', uri, body, headers, data);
   } catch (err) {
     return ErrorResponse('POST', uri, body, headers, err);
@@ -84,7 +85,7 @@ export let get = async (uri: string, query: any = {}, headers: any = {}) => {
     let params = querystring.stringify(query);
     uri = url1 + (params ? '?' + params : '');
 
-    let data = await rp.get(uri, { json: true, headers });
+    let data = await rp.get(uri, { json: true, headers, timeout });
     return SuccessRequest('GET', uri, query, headers, data);
   } catch (err) {
     return ErrorResponse('GET', uri, query, headers, err);
@@ -100,7 +101,7 @@ export let get = async (uri: string, query: any = {}, headers: any = {}) => {
 export let put = async (uri: string, body: any = {}, headers: any = {}) => {
   try {
     setHeaders(headers);
-    let data = await rp.put(uri, { body, headers, json: true });
+    let data = await rp.put(uri, { body, headers, json: true, timeout });
     return SuccessRequest('PUT', uri, body, headers, data);
   } catch (err) {
     return ErrorResponse('PUT', uri, body, headers, err);
@@ -115,7 +116,7 @@ export let put = async (uri: string, body: any = {}, headers: any = {}) => {
 export let del = async (uri: string, body: any = {}, headers: any = {}) => {
   try {
     setHeaders(headers);
-    let data = await rp.del(uri, { body, headers, json: true });
+    let data = await rp.del(uri, { body, headers, json: true, timeout });
     return SuccessRequest('DEL', uri, body, headers, data);
   } catch (err) {
     return ErrorResponse('DEL', uri, body, headers, err);

@@ -1,6 +1,6 @@
 {
   "name": "jmessage-rest-sdk",
-  "version": "0.0.11",
+  "version": "0.0.14",
   "description": "",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -8,7 +8,9 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "yanxxit",
+  "homepage": "https://www.yxxit.com/view/",
+  "repository": "yanxxit/jmessage-rest-sdk",
   "license": "ISC",
   "dependencies": {
     "moment": "^2.24.0",
